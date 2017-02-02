@@ -14,7 +14,7 @@ all: help
 
 .PHONY: s3
 s3: $(DUPLICITY_BIN)
-	$(DUPLICITY_BIN) $(SRC_DIR) s3://$(BCP_HOST)/$(BCP_DIR)
+	$(DUPLICITY_BIN) --encrypt-key=$(GPG_ENC_KEY_ID) --file-prefix-archive=$(ARCHIVE_PREFIX) --file-prefix-manifest=$(MANIFEST_PREFIX) --file-prefix-signature=$(SIGNATURE_PREFIX) $(SRC_DIR) s3://$(BCP_HOST)/$(BCP_DIR)
 
 .PHONY: update
 update:
