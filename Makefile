@@ -20,6 +20,13 @@ s3: $(DUPLICITY_BIN)
 update:
 	wget -O Makefile https://raw.githubusercontent.com/theranger/duplicity-make/master/Makefile
 
+.PHONY: update-conf
+update-conf:
+	wget --backups=1 https://raw.githubusercontent.com/theranger/duplicity-make/master/Makefile.conf
+
+.PHONY: update-all
+update-all: update update-conf
+
 .PHONY: help
 help:
 	@echo "\nRunning duplicity-make version: $(VERSION)\n"
